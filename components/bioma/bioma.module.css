@@ -1,0 +1,835 @@
+/* Tela "Bioma da Sorte" (Figma: arquivo roleta, frames Parada / Girando / Vitória / Sem prêmio). */
+
+.page {
+  --ink: #f3f5e8;
+  --muted: #a6b9a9;
+  --green: #66e39d;
+  --gold: #f2d47f;
+  --line: #3e554b;
+  --panel: #101f1c;
+  --stone: #1e302e;
+  --stone-edge: #566a60;
+  --gutter: clamp(16px, 4.45vw, 64px);
+
+  position: relative;
+  min-height: 100vh;
+  background: #071512;
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(6, 21, 14, 0.8) 0%, rgba(6, 21, 14, 0.46) 45%, rgba(6, 21, 14, 0.91) 100%),
+    url('/bioma/floresta-noturna.jpg') center / cover no-repeat;
+}
+
+.pixel {
+  font-family: var(--font-pixel), monospace;
+  font-weight: 400;
+}
+
+.page button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.page button:disabled {
+  cursor: not-allowed;
+}
+.page :focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- navegação ---------- */
+
+.nav {
+  height: 76px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 var(--gutter);
+  background: rgba(9, 24, 19, 0.9);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.emblem {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: #125439;
+  border: 2px solid var(--green);
+}
+.brandName {
+  font-size: 14px;
+  white-space: nowrap;
+}
+.sep {
+  width: 1px;
+  height: 22px;
+  background: var(--line);
+}
+.mode {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green);
+  white-space: nowrap;
+}
+.prefs {
+  display: flex;
+  gap: 10px;
+}
+.pref {
+  height: 40px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-size: 13px !important;
+  white-space: nowrap;
+}
+.pref:hover {
+  border-color: var(--stone-edge);
+}
+.prefOff img {
+  opacity: 0.45;
+}
+
+/* ---------- área de jogo ---------- */
+
+.area {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px var(--gutter) 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.intro {
+  min-height: 106px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.introText {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.kicker {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+}
+.title {
+  font-size: clamp(20px, 2.25vw, 32px);
+  line-height: 1.3;
+  margin: 0;
+}
+.tagline {
+  font-size: 15px;
+  color: var(--muted);
+}
+.rule {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+.ruleMain {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.ruleSub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.game {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* ---------- máquina ---------- */
+
+.machine {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: var(--stone);
+  border: 3px solid var(--stone-edge);
+  border-radius: 4px;
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+.machine::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: #354944;
+}
+.machineWin {
+  border-color: var(--gold);
+}
+
+.machineHead {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.machineId {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.light {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+}
+.machineWin .light {
+  background: var(--gold);
+}
+.status {
+  padding: 6px 10px;
+  background: var(--panel);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+}
+.machineWin .status {
+  background: #514b29;
+  color: var(--gold);
+}
+
+/* visor e rolos */
+
+.visor {
+  position: relative;
+  height: 300px;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #06100d;
+  border: 2px solid var(--line);
+  border-radius: 2px;
+}
+.reel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 280px;
+  overflow: hidden;
+  background: #cad4bd;
+  border: 2px solid #6d8170;
+  border-radius: 2px;
+}
+.machineWin .reel {
+  background: #dfe4ba;
+  border: 3px solid var(--gold);
+}
+.strip {
+  position: absolute;
+  left: 50%;
+  top: -114px;
+  width: 256px;
+  max-width: 100%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.side {
+  width: 206px;
+  max-width: 88%;
+  height: 134px;
+  object-fit: contain;
+  opacity: 0.27;
+  flex-shrink: 0;
+}
+.main {
+  width: 236px;
+  max-width: 100%;
+  height: 190px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.reelSpinning .strip {
+  top: -92px;
+  filter: blur(2.5px);
+  animation: roll 0.18s linear infinite;
+}
+.reelSpinning .side {
+  opacity: 0.5;
+}
+.reelSpinning .main {
+  opacity: 0.8;
+}
+@keyframes roll {
+  from {
+    transform: translate(-50%, -14px);
+  }
+  to {
+    transform: translate(-50%, 14px);
+  }
+}
+.reelStopped .strip {
+  animation: settle 0.22s ease-out;
+}
+@keyframes settle {
+  from {
+    transform: translate(-50%, -18px);
+  }
+  to {
+    transform: translate(-50%, 0);
+  }
+}
+.shade,
+.shadeBottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 52px;
+  pointer-events: none;
+}
+.shade {
+  top: 0;
+  background: linear-gradient(180deg, rgba(21, 42, 33, 0.5), rgba(21, 42, 33, 0));
+}
+.shadeBottom {
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(21, 42, 33, 0), rgba(21, 42, 33, 0.5));
+}
+.trail {
+  position: absolute;
+  width: 3px;
+  background: rgba(241, 247, 218, 0.41);
+}
+.animalName {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 219px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #152c22;
+}
+.payline {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 60px;
+  height: 190px;
+  border: 1px solid rgba(61, 130, 84, 0.5);
+  pointer-events: none;
+}
+.machineWin .payline {
+  border: 3px solid var(--gold);
+}
+.indicator {
+  position: absolute;
+  top: calc(50% - 9px);
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+}
+.indicatorLeft {
+  left: -27px;
+  transform: rotate(90deg);
+}
+.indicatorRight {
+  right: -27px;
+  transform: rotate(-90deg);
+}
+.confetti {
+  position: absolute;
+  pointer-events: none;
+  animation: pop 0.5s ease-out both;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    translate: 0 -12px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* feedback */
+
+.feedback {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.feedbackWin {
+  background: #3c3b24;
+  border-color: #9c8748;
+}
+.feedbackText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.feedbackTitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+.feedbackTitleWin {
+  font-size: 15px;
+  color: var(--gold);
+}
+.feedbackSub {
+  font-size: 12px;
+  color: var(--muted);
+}
+.feedbackAmount {
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.spin {
+  animation: rotate 0.9s linear infinite;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.pulses {
+  display: flex;
+  gap: 6px;
+}
+.pulses span {
+  width: 7px;
+  height: 7px;
+  background: var(--line);
+  animation: pulse 0.9s steps(1) infinite;
+}
+.pulses span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.pulses span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+@keyframes pulse {
+  0%,
+  33% {
+    background: var(--green);
+  }
+  34%,
+  100% {
+    background: var(--line);
+  }
+}
+
+/* controles */
+
+.controls {
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px 4px;
+}
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.credits {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.amount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.amountValue {
+  font-size: 25px;
+  font-weight: 800;
+}
+.unit {
+  font-size: 11px;
+  color: var(--muted);
+}
+.vsep {
+  width: 1px;
+  height: 44px;
+  background: var(--line);
+}
+.bet {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.betDisabled {
+  opacity: 0.45;
+}
+.selector {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.stepper {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.stepper:disabled {
+  opacity: 0.4;
+}
+.betValue {
+  font-size: 22px;
+  font-weight: 800;
+  min-width: 3ch;
+  text-align: center;
+}
+.lastPrize {
+  width: 112px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lastPrizeValue {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.lastPrizeWin {
+  color: var(--gold);
+}
+
+.spinButton {
+  width: 248px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: #23965e;
+  border: solid #90eeb5;
+  border-width: 3px 2px 0;
+  border-radius: 2px;
+  box-shadow: 0 5px 0 #0d5935;
+  transition: transform 0.06s;
+}
+.spinButton:hover:not(:disabled) {
+  background: #27a668;
+}
+.spinButton:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #0d5935;
+}
+.spinAction {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #f2fff3;
+}
+.spinSub {
+  font-size: 10px;
+  font-weight: 600;
+  color: #d1f5de;
+}
+.spinButtonBusy {
+  background: #33443c;
+  border-color: var(--line);
+  box-shadow: 0 5px 0 #17241d;
+}
+.spinButtonBusy .spinAction,
+.spinButtonBusy .spinSub {
+  color: #82988a;
+}
+
+/* ---------- recompensas ---------- */
+
+.rewards {
+  width: 312px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: var(--stone);
+  border: 2px solid var(--stone-edge);
+  border-radius: 4px;
+}
+.rewardsHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.rewardsText {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.rewardList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.reward {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.rewardHit {
+  background: #125439;
+  border-color: var(--gold);
+}
+.rewardImg {
+  width: 46px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.rewardName {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.rewardName small {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.mult {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--gold);
+}
+.maxPrize {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+}
+.maxPrize > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.maxPrizeValue {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+/* ---------- guia rápido e rodapé ---------- */
+
+.guide {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 14px 24px;
+  background: rgba(14, 33, 28, 0.9);
+  border: 1px solid var(--line);
+}
+.step {
+  flex: 1 1 260px;
+  max-width: 382px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.stepNum {
+  font-size: 16px;
+  color: var(--green);
+}
+.step strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.step span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 0 var(--gutter);
+  font-size: 11px;
+  color: var(--muted);
+}
+.footer > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- "Como jogar" ---------- */
+
+.dialog {
+  max-width: 520px;
+  width: calc(100% - 32px);
+  padding: 24px;
+  background: var(--stone);
+  color: var(--ink);
+  border: 2px solid var(--stone-edge);
+  border-radius: 4px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+.dialog::backdrop {
+  background: rgba(3, 10, 7, 0.7);
+}
+.dialog h2 {
+  margin: 0 0 16px;
+  font-size: 14px;
+}
+.dialog ol {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.dialog ol strong {
+  color: var(--ink);
+}
+.dialogClose {
+  height: 40px;
+  padding: 0 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+/* ---------- telas menores ---------- */
+
+@media (max-width: 1100px) {
+  .game {
+    flex-direction: column;
+  }
+  .rewards {
+    width: 100%;
+  }
+  .machine {
+    min-height: 0;
+  }
+}
+@media (max-width: 700px) {
+  .mode,
+  .sep,
+  .prefLabel {
+    display: none;
+  }
+  .rule {
+    align-items: flex-start;
+  }
+  .visor {
+    height: 220px;
+  }
+  .reel {
+    height: 200px;
+  }
+  .strip {
+    top: -150px;
+  }
+  .animalName {
+    top: 172px;
+  }
+  .payline {
+    top: 40px;
+    height: 150px;
+  }
+  .spinButton {
+    width: 100%;
+  }
+  .vsep {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reelSpinning .strip,
+  .reelStopped .strip,
+  .spin,
+  .pulses span,
+  .confetti {
+    animation: none;
+  }
+}
