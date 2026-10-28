@@ -1,0 +1,14 @@
+experimento,verificacao,esperado,observado,ok
+E1,Contagens dos seis resultados somam o número de rodadas,10000,10000,sim
+E1,Rodadas executadas,10000,10000,sim
+E2,Primeiros 10 resultados reproduzidos com a semente 2026,sim,sim,sim
+E2,Rodadas na sequência da semente 10,10000,10000,sim
+E2,Rodadas na sequência da semente 2026,10000,10000,sim
+E2,Rodadas na sequência da semente 123456,10000,10000,sim
+E3,Ganho + empate + perda = participantes,100,100,sim
+E3,Todo esgotamento é uma perda,67,67,sim
+E4,Pares consecutivos examinados = N − 1,9999,9999,sim
+E5,Mesmo número de rodadas premiadas em todas as tabelas (mesma sequência),418,418,sim
+E5,Rodadas reavaliadas,10000,10000,sim
+E5,"RTP teórico +10% = 92,4%",231/250,231/250,sim
+E5,"E[X] teórico +10% = −0,076",-19/250,-19/250,sim

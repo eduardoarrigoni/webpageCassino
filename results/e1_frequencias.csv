@@ -1,0 +1,8 @@
+resultado,lucro_X,probabilidade_teorica_fracao,probabilidade_teorica,contagem,frequencia_relativa
+Qualquer outra tripla,-1,24/25,0.96,9582,0.9582
+A–A–A,4,1/125,0.008,91,0.0091
+B–B–B,9,1/125,0.008,87,0.0087
+C–C–C,14,1/125,0.008,68,0.0068
+D–D–D,24,1/125,0.008,84,0.0084
+E–E–E,49,1/125,0.008,88,0.0088
+Total,,1,1,10000,1

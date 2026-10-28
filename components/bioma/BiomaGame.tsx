@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { api } from '@/lib/api';
+import { ApiError, api } from '@/lib/api';
 import type { LiveRoundView, Meta, SessionState, Sym, Triple } from '@/lib/types';
 import s from './bioma.module.css';
 import { useSounds } from './useSounds';
@@ -113,7 +113,7 @@ export function BiomaGame() {
     setStopped([false, false, false]);
     const started = Date.now();
     try {
-      const res = await api.spin(session.id, 1, bet);
+      const res = await api.spin(session.token, 1, bet);
       const r = res.rounds[0]!;
       await sleep(Math.max(0, MIN_SPIN_MS - (Date.now() - started)));
       // Os rolos param um de cada vez, da esquerda para a direita, no resultado sorteado pela API.
@@ -129,6 +129,12 @@ export function BiomaGame() {
       effect(won ? 'premio' : 'semPremio');
     } catch (e) {
       setStopped([true, true, true]);
+      // Sessão não reconhecida (ex.: servidor reiniciado com outra chave): começa uma nova.
+      if (e instanceof ApiError && e.status === 401 && meta) {
+        await newSession(meta);
+        setError('A sessão anterior expirou. Uma nova sessão foi iniciada; gire de novo.');
+        return;
+      }
       setPhase(round ? (round.prize > 0 ? 'win' : 'lose') : 'idle');
       setError((e as Error).message);
     }

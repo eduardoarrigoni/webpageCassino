@@ -1,0 +1,8 @@
+medida,unidade,observado,teorico
+rodadas N,rodadas,10000,
+lucro médio,créditos por rodada,-0.1155,-0.16
+RTP,proporção do apostado,0.8845,0.84
+proporção de rodadas premiadas,proporção,0.0418,0.04
+"desvio-padrão do lucro (amostral, N−1)",créditos,5.394262651832787,5.20522814101361
+prêmio total,créditos,8845,
+lucro total,créditos,-1155,

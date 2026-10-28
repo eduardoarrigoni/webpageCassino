@@ -1,0 +1,3 @@
+tabela,prob_premio_teorica,freq_premio_observada,rodadas_premiadas,premio_medio_por_rodada,premio_medio_quando_premiado,premio_esperado_E_P,lucro_medio,lucro_esperado_E_X,rtp_teorico,rtp_observado
+Base,0.04,0.0418,418,0.8845,21.160287081339714,0.84,-0.1155,-0.16,0.84,0.8845
+Prêmios +10%,0.04,0.0418,418,0.97295,23.276315789473685,0.924,-0.02705,-0.076,0.924,0.97295

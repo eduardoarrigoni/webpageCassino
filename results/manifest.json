@@ -1,0 +1,234 @@
+{
+  "title": "Máquina didática: resultados oficiais",
+  "disclaimer": "Simulador acadêmico - somente créditos fictícios",
+  "generatedAt": "2026-10-28T00:17:01.764Z",
+  "command": "pnpm results",
+  "environment": {
+    "node": "v20.20.2",
+    "platform": "linux",
+    "arch": "x64",
+    "osRelease": "6.17.0-35-generic"
+  },
+  "generator": {
+    "library": "pure-rand",
+    "version": "8.4.2",
+    "algorithm": "xoroshiro128plus",
+    "distribution": "uniformInt (amostragem por rejeição, sem viés)"
+  },
+  "seedPolicy": "O gerador é criado uma única vez por execução/semente e nunca reiniciado entre rodadas ou participantes.",
+  "libraries": {
+    "pure-rand": "8.4.2",
+    "vega": "6.4.0",
+    "vega-lite": "6.4.3"
+  },
+  "rules": {
+    "reel": "A,B,C,D,E (circular, posições 0–4)",
+    "bet": 1,
+    "paytables": {
+      "base": {
+        "A": 5,
+        "B": 10,
+        "C": 15,
+        "D": 25,
+        "E": 50
+      },
+      "plus10": {
+        "A": 5.5,
+        "B": 11,
+        "C": 16.5,
+        "D": 27.5,
+        "E": 55
+      }
+    }
+  },
+  "experiments": {
+    "E1": {
+      "seed": 2026,
+      "rounds": 10000,
+      "table": "base"
+    },
+    "E2": {
+      "seeds": [
+        10,
+        2026,
+        123456
+      ],
+      "rounds": 10000,
+      "checkpoints": [
+        100,
+        1000,
+        10000
+      ],
+      "reproductionSeed": 2026,
+      "reproductionCount": 10,
+      "table": "base"
+    },
+    "E3": {
+      "seed": 42,
+      "participants": 100,
+      "initialBalance": 100,
+      "maxRounds": 500,
+      "trajectoriesShown": 5,
+      "table": "base"
+    },
+    "E4": {
+      "seed": 2026,
+      "rounds": 10000,
+      "table": "base",
+      "note": "Mesmas rodadas do E1 (não sorteadas de novo)."
+    },
+    "E5": {
+      "seed": 2026,
+      "rounds": 10000,
+      "tables": [
+        "base",
+        "plus10"
+      ],
+      "note": "Mesmas rodadas do E1 reavaliadas com cada tabela (sem novo sorteio)."
+    }
+  },
+  "checks": {
+    "total": 13,
+    "allOk": true
+  },
+  "files": [
+    {
+      "path": "teoria.csv",
+      "bytes": 657,
+      "sha256": "e698278df406af3c666a7daea384e3159814d7317d3564bc3115b4bb8808d5f2",
+      "description": "Tabela 1 por tabela de pagamentos: P, X, probabilidade e contribuição para E[X]"
+    },
+    {
+      "path": "teoria_resumo.csv",
+      "bytes": 622,
+      "sha256": "acb5ede01d2753063a52e6d5d1ab95934a24617cf394e1961b27eaa86cbd0c2c",
+      "description": "Espaço amostral, chance de prêmio, E[P], E[X], RTP, vantagem, Var(X)"
+    },
+    {
+      "path": "teoria_distribuicao_lucro.svg",
+      "bytes": 21775,
+      "sha256": "f5229f928b70ad7e222f8fcb8d0742e7ffc32d5fc265ecb738afdf53db6aad66",
+      "description": "Figura 4 (esq.): distribuição teórica de X"
+    },
+    {
+      "path": "teoria_contribuicoes.svg",
+      "bytes": 19303,
+      "sha256": "8af3283c5a73efade78f4fcb9e597568797e32b0ec2d272363cdd9894bfb8523",
+      "description": "Figura 4 (dir.): contribuições x·Pr(X=x)"
+    },
+    {
+      "path": "e1_rodadas.csv",
+      "bytes": 339159,
+      "sha256": "a5d4f32053d4b8dcf965234bd89e700ebceeea9d0580ca5807d1cd3272051914",
+      "description": "Registro das 10.000 rodadas (semente 2026), usado em E1, E2, E4 e E5"
+    },
+    {
+      "path": "e1_frequencias.csv",
+      "bytes": 338,
+      "sha256": "da92c798def34748b40b8479a77fe392ee44d38d67dd14f1310a23a3990bbfa8",
+      "description": "Lucro, probabilidade teórica, contagem e frequência relativa"
+    },
+    {
+      "path": "e1_resumo.csv",
+      "bytes": 351,
+      "sha256": "a2f81bf4b78bced282405662aa6096f612c36e55a092d92cd36e967ce83b7c92",
+      "description": "Lucro médio, RTP observado, proporção de prêmios e desvio-padrão"
+    },
+    {
+      "path": "e1_teoria_vs_observado.svg",
+      "bytes": 37112,
+      "sha256": "7a186f67afd792b9162a1842d9da6943329f2a32c2424167be81d831f12bbec2",
+      "description": "Barras: probabilidade teórica × frequência observada"
+    },
+    {
+      "path": "e1_premios_detalhe.svg",
+      "bytes": 29432,
+      "sha256": "f2a6b07ccfeee1cad0d7a22903c54727e59fcb3395e5b30295e868292ef7358a",
+      "description": "Detalhe das cinco triplas premiadas"
+    },
+    {
+      "path": "e2_medias.csv",
+      "bytes": 124,
+      "sha256": "4b63485e3a3255edf5e355a77eba6a6a0df0327c9403ae01603c0632cd12df6f",
+      "description": "Tabela 3×3: média acumulada após 100, 1.000 e 10.000 rodadas"
+    },
+    {
+      "path": "e2_trajetorias.csv",
+      "bytes": 667254,
+      "sha256": "d9aaa820fc6c8aa7326c5e06e123ff06c8ce2700aba189c439ecef0406f7f003",
+      "description": "Média acumulada após cada rodada, por semente"
+    },
+    {
+      "path": "e2_reproducao.csv",
+      "bytes": 563,
+      "sha256": "c10ddb41c0299b2bb9e9e1b430c0e7a736f10a555f42b56919f7cf1241965d9b",
+      "description": "Reexecução da semente 2026: dez primeiros resultados"
+    },
+    {
+      "path": "e2_medias_acumuladas.svg",
+      "bytes": 30024,
+      "sha256": "7d740b852f392ae702ed304a346beec37b89726a35adb97b34d249d0a61affbe",
+      "description": "Trajetórias das médias acumuladas e referência E[X]"
+    },
+    {
+      "path": "e3_participantes.csv",
+      "bytes": 2402,
+      "sha256": "b937d5aff2745d5b39f59797e58f741374a7e5be693e3f2eb0a995b3b6ff75d9",
+      "description": "Saldo final, rodadas e esgotamento de cada participante"
+    },
+    {
+      "path": "e3_resumo.csv",
+      "bytes": 393,
+      "sha256": "ff0d32a52b4eaa1ad0fec81a5352eb81934df253cf1d4db69c9a657b61f0cc84",
+      "description": "Proporções de ganho/empate/perda, esgotamento, média e mediana"
+    },
+    {
+      "path": "e3_trajetorias.csv",
+      "bytes": 8856,
+      "sha256": "84c3b44e2ebd120c085206780dee43de07ae1be65a540a9f33fa7ff0772c86f9",
+      "description": "Saldo após cada rodada dos 5 primeiros participantes (constante após a parada)"
+    },
+    {
+      "path": "e3_trajetorias.svg",
+      "bytes": 54021,
+      "sha256": "f1bcc71c748f27ece85533bd91606411bcfeb5b8d90478b2bb649ce0d0dd4b5b",
+      "description": "Trajetórias de saldo dos 5 primeiros participantes"
+    },
+    {
+      "path": "e3_saldos_finais.svg",
+      "bytes": 29207,
+      "sha256": "0f17fc36bbb55dfac4b8b1f44f67fb80cd1a9aa7b72323c89f4deb15987d3c90",
+      "description": "Distribuição dos saldos finais, com média e mediana"
+    },
+    {
+      "path": "e4_condicional.csv",
+      "bytes": 212,
+      "sha256": "ce9b851c2b941f52cad81f4d855ba48204ff5434e376caac2f48a44204e4bc89",
+      "description": "Proporção de prêmio na rodada seguinte, por resultado anterior"
+    },
+    {
+      "path": "e4_condicional.svg",
+      "bytes": 12929,
+      "sha256": "80b934d9c7745d7175ed2a30ae217370cde330ff39337e6fd5819a3f0f3b8433",
+      "description": "Proporção de prêmio após prêmio e após sem prêmio"
+    },
+    {
+      "path": "e5_comparacao.csv",
+      "bytes": 368,
+      "sha256": "95bf8d71d3f2ad0989ba2fea7b8362f846b2ebc71b28a5402ba548ce2e54c738",
+      "description": "Base × Prêmios +10% sobre as mesmas 10.000 rodadas"
+    },
+    {
+      "path": "e5_rtp.svg",
+      "bytes": 21059,
+      "sha256": "34f59cd365c62822da037c138eb368260e5f53ee944a7570278097a745daab2c",
+      "description": "RTP teórico × observado nas duas tabelas"
+    },
+    {
+      "path": "verificacoes.csv",
+      "bytes": 790,
+      "sha256": "759d6ccbb2d8a55452a493421b3602944bfc5434053f984c41891beb1657b3fd",
+      "description": "Conferências automáticas de cada experimento"
+    }
+  ]
+}

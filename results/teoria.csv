@@ -1,0 +1,13 @@
+tabela,resultado,triplas,premio_P,lucro_X,probabilidade_fracao,probabilidade,contribuicao_E_X
+base,A–A–A,1,5,4,1/125,0.008,0.032
+base,B–B–B,1,10,9,1/125,0.008,0.07200000000000001
+base,C–C–C,1,15,14,1/125,0.008,0.112
+base,D–D–D,1,25,24,1/125,0.008,0.192
+base,E–E–E,1,50,49,1/125,0.008,0.392
+base,Qualquer outra tripla,120,0,-1,24/25,0.96,-0.96
+plus10,A–A–A,1,5.5,4.5,1/125,0.008,0.036000000000000004
+plus10,B–B–B,1,11,10,1/125,0.008,0.08
+plus10,C–C–C,1,16.5,15.5,1/125,0.008,0.124
+plus10,D–D–D,1,27.5,26.5,1/125,0.008,0.212
+plus10,E–E–E,1,55,54,1/125,0.008,0.432
+plus10,Qualquer outra tripla,120,0,-1,24/25,0.96,-0.96

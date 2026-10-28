@@ -18,7 +18,7 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
       cache: 'no-store',
     });
   } catch {
-    throw new ApiError(0, 'Não foi possível falar com a API. Ela está rodando (pnpm api)?');
+    throw new ApiError(0, 'Não foi possível falar com o servidor. Ele está rodando (pnpm dev)?');
   }
   if (res.status === 204) return undefined as T;
   const body = (await res.json().catch(() => null)) as { message?: string | string[] } | null;
@@ -36,8 +36,8 @@ export const api = {
   theory: (table: PayTableId) => call<TheoryResponse>(`/theory?table=${table}`),
 
   createSession: (body: { seed?: number; initialBalance?: number; table?: PayTableId }) => post<SessionState>('/sessions', body),
-  spin: (id: string, count: number, bet?: number) => post<SpinResponse>(`/sessions/${id}/spin`, { count, bet }),
-  deleteSession: (id: string) => call<void>(`/sessions/${id}`, { method: 'DELETE' }),
+  /** O token da sessão carrega o estado (assinado pelo servidor); cada giro devolve um token novo. */
+  spin: (token: string, count: number, bet?: number) => post<SpinResponse>('/sessions/spin', { token, count, bet }),
 
   official: <N extends ExperimentId>(n: N) => call<Envelope<N>>(`/experiments/${n}/official`),
   run: <N extends ExperimentId>(n: N, params: Partial<ParamsById[N]>) => post<Envelope<N>>(`/experiments/${n}`, params),

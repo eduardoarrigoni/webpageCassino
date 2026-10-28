@@ -1,0 +1,11 @@
+rodada,paradas_execucao_1,centro_execucao_1,lucro_execucao_1,paradas_execucao_2,centro_execucao_2,lucro_execucao_2,iguais
+1,1-0-1,C–B–C,-1,1-0-1,C–B–C,-1,sim
+2,2-1-0,D–C–B,-1,2-1-0,D–C–B,-1,sim
+3,2-2-2,D–D–D,24,2-2-2,D–D–D,24,sim
+4,2-2-0,D–D–B,-1,2-2-0,D–D–B,-1,sim
+5,4-0-0,A–B–B,-1,4-0-0,A–B–B,-1,sim
+6,0-4-3,B–A–E,-1,0-4-3,B–A–E,-1,sim
+7,3-1-0,E–C–B,-1,3-1-0,E–C–B,-1,sim
+8,0-2-1,B–D–C,-1,0-2-1,B–D–C,-1,sim
+9,2-2-1,D–D–C,-1,2-2-1,D–D–C,-1,sim
+10,1-0-2,C–B–D,-1,1-0-2,C–B–D,-1,sim

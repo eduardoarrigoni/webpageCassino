@@ -1,0 +1,19 @@
+tabela,medida,fracao,valor
+base,tamanho do espaço amostral,125,125
+base,triplas premiadas,5,5
+base,Pr(prêmio),1/25,0.04
+base,E[P],21/25,0.84
+base,E[X],-4/25,-0.16
+base,RTP = E[P]/aposta,21/25,0.84
+base,vantagem do operador = 1 − RTP,4/25,0.16
+base,Var(X),16934/625,27.0944
+base,DP(X),,5.20522814101361
+plus10,tamanho do espaço amostral,125,125
+plus10,triplas premiadas,5,5
+plus10,Pr(prêmio),1/25,0.04
+plus10,E[P],231/250,0.924
+plus10,E[X],-19/250,-0.076
+plus10,RTP = E[P]/aposta,231/250,0.924
+plus10,vantagem do operador = 1 − RTP,19/250,0.076
+plus10,Var(X),1024507/31250,32.784224
+plus10,DP(X),,5.725750955114971

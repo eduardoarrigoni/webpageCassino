@@ -1,12 +1,6 @@
 import type { NextConfig } from 'next';
 
-const API_URL = process.env.API_URL ?? 'http://localhost:3001';
-
-/** A interface só exibe; todas as regras rodam na API (Nest). O proxy evita CORS no navegador. */
-const config: NextConfig = {
-  async rewrites() {
-    return [{ source: '/api/:path*', destination: `${API_URL}/api/:path*` }];
-  },
-};
+/** A API (regras, sorteios e experimentos) roda aqui mesmo, nos Route Handlers de app/api. */
+const config: NextConfig = {};
 
 export default config;

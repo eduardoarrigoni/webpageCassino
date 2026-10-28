@@ -1,0 +1,11 @@
+medida,contagem,valor
+participantes,100,
+ganho (saldo final > inicial),13,0.13
+empate (saldo final = inicial),0,0
+perda (saldo final < inicial),87,0.87
+esgotamento (proporção dos participantes),67,0.67
+esgotamento entre as perdas,67,0.7701149425287356
+saldo final médio (créditos),,34.55
+saldo final mediano (créditos),,0
+"rodadas jogadas, média",,314.55
+"rodadas jogadas, mediana",,280
